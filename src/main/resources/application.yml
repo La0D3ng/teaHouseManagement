@@ -1,0 +1,37 @@
+server:
+  port: 8090 # 后端端口
+  address: 0.0.0.0 # 监听所有网络接口，允许外部访问
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/tea
+    username: root
+    password: 1472580369.q
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB # 单个文件最大大小
+      max-request-size: 10MB # 请求最大大小
+
+# Swagger/OpenAPI 配置
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  show-actuator: false
+
+encoder:
+  crypt:
+    secret: ${random.uuid} # 随机的密钥，使用 uuid ，在一台机器上生成的数字，它保证对在同一时空中的所有机器都是唯一的
+    strength: 6 # 加密强度
+
+# 文件上传配置
+file:
+  avatar-path: e:/code/JavaCode/demo/uploads/avatars/ # 头像存储路径(使用绝对路径)
+  room-image-path: e:/code/JavaCode/demo/uploads/rooms/ # 包间图片存储路径(使用绝对路径)
